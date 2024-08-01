@@ -1,0 +1,26 @@
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.nav-items ul {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-items ul li {
+    border: 1px solid black;
+    padding: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px;
+}
+
+.nav-items ul li:hover {
+    background-color: #2d2f31;
+    color: white;
+}
+
+@media (max-width: 767px) {
+}
