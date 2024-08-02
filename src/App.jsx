@@ -6,6 +6,7 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/login /Login";
 import Signup from "./pages/signup/Signup";
 import { useState } from "react";
+import Main from "./pages/Main/Main";
 
 const App = () => {
   const [name, setName] = useState("");
@@ -41,6 +42,7 @@ const App = () => {
             />
           }
         />
+        <Route path="/main" element={<Main />} />
       </Routes>
       <Footer />
     </div>
