@@ -1,0 +1,15 @@
+.signup {
+    height: 80vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    border: 1px solid black;
+    padding: 80px 50px 80px 50px;
+    border-radius: 12px;
+}
