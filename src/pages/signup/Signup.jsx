@@ -22,7 +22,7 @@ const Signup = ({ name, email, password, setName, setEmail, setPassword }) => {
 
       if (response.data && response.data.accessToken) {
         localStorage.setItem("token", response.data.accessToken);
-        navigate("/home");
+        navigate("/main");
       }
 
       if (response.status === 400) {

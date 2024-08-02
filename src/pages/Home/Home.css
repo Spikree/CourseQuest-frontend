@@ -44,6 +44,10 @@
     width: 600px;
 }
 
+.nav-items-home {
+    display: none;
+}
+
 .home-one-left h1 {
     padding-left: 20px;
     margin: 0px;
@@ -55,8 +59,13 @@
         padding: 0;
     }
 
+    .home-one {
+        width: inherit;
+    }
+
     .home-one-left {
-        width: fit-content;
+        width: 400px;
+        padding-right: 0;
     }
 
     .home-one-right {
@@ -66,5 +75,9 @@
     .home-one-left h1 {
         padding-left: 0px;
         margin: 0px;
+    }
+
+    .nav-items-home {
+        display: block;
     }
 }

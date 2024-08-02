@@ -22,7 +22,7 @@ const Login = ({ email, password, setEmail, setPassword }) => {
 
       if (response.data && response.data.accessToken) {
         localStorage.setItem("token", response.data.accessToken);
-        navigate("/home");
+        navigate("/main");
       }
 
       if (response.status === 200) {

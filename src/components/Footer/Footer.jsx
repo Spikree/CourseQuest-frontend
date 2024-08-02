@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <>
       <div className="footer">
-        <div className="first-row">
+        <div className="footer-first-row">
           <div className="f-row-left">
             <h3>
               Teach the skill you know to the world, learn skills you want to
@@ -24,8 +24,11 @@ const Footer = () => {
           <div className="column-1">
             <ul>
               <li>courseQuest</li>
+              <br />
               <li>for developers by developers</li>
+              <br />
               <li>Avi Mahalingpure</li>
+              <br />
               <div className="connections">
                 <VscGithubInverted />
                 <FaLinkedin />

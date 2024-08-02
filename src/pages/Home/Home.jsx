@@ -1,14 +1,22 @@
 import "./Home.css";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
     <>
       <div className="home">
-        <div className="home-one">
+        <section className="home-one">
           <div className="home-one-left">
             <h1>
               Welcome to courseQuest where learning and teaching becomes reality
             </h1>
+            <div className="nav-items-home">
+              <ul>
+                <Link to={"/login"}>Login</Link>
+                <br />
+                <Link to={"/signup"}>Signup</Link>
+              </ul>
+            </div>
           </div>
 
           <div className="home-one-right">
@@ -20,7 +28,7 @@ const Home = () => {
               sell courses on a wide range of subjects.
             </p>
           </div>
-        </div>
+        </section>
       </div>
     </>
   );
