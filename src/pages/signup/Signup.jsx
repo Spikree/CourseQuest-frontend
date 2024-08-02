@@ -4,10 +4,12 @@ import { FaEye } from "react-icons/fa";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const Signup = ({ name, email, password, setName, setEmail, setPassword }) => {
   const [showPassword, setShowPassword] = useState(false);
   const api = "http://localhost:5000";
+  const navigate = useNavigate();
   const handleSubmit = async () => {
     event.preventDefault();
 
@@ -18,29 +20,30 @@ const Signup = ({ name, email, password, setName, setEmail, setPassword }) => {
         password: password,
       });
 
-      if (response.status === 200) {
+      if (response.data && response.data.accessToken) {
+        localStorage.setItem("token", response.data.accessToken);
+        navigate("/home");
+      }
+
+      if (response.status === 400) {
+        toast.error(response.data.message, {
+          position: "top-left",
+        });
+      } else if (response.status == 200) {
         setName("");
         setEmail("");
         setPassword("");
-        toast.success("Account created successfully!", {
-          position: "top-center",
-        });
-      } else {
-        toast.error("Failed to create account. Please try again later.", {
-          position: "top-left",
+        toast.success(response.data.message, {
+          position: "top-right",
         });
       }
 
       setName("");
       setEmail("");
       setPassword("");
-
-      toast.success("Success Notification !", {
-        position: "top-center",
-      });
     } catch (error) {
-      toast.error("Error Notification !", {
-        position: "top-left",
+      toast.error(error.response.data.message, {
+        position: "top-right",
       });
     }
   };

@@ -1,22 +1,59 @@
 import { useState } from "react";
 import "./Login.css";
 import { FaEye } from "react-icons/fa";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ email, password, setEmail, setPassword }) => {
   const [showPassword, setShowPassword] = useState(false);
+  const api = "http://localhost:5000";
+  const navigate = useNavigate();
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     event.preventDefault();
-    setEmail("");
-    setPassword("");
+
+    try {
+      const response = await axios.post(api + "/login-account", {
+        email: email,
+        password: password,
+      });
+
+      if (response.data && response.data.accessToken) {
+        localStorage.setItem("token", response.data.accessToken);
+        navigate("/home");
+      }
+
+      if (response.status === 200) {
+        toast.success(response.data.message, {
+          position: "top-right",
+        });
+
+        setEmail("");
+        setPassword("");
+      }
+
+      if (response.status === 400) {
+        toast.error(response.data.message, {
+          position: "top-left",
+        });
+      }
+    } catch (error) {
+      toast.error(error.response.data.message, {
+        position: "top-left",
+      });
+    }
   };
 
   return (
     <div className="login">
+      <ToastContainer />
       <form className="login-form" onSubmit={() => handleSubmit()}>
         <div className="inputs">
           <label>email</label>
           <input
+            required
             className="login-input"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -29,6 +66,7 @@ const Login = ({ email, password, setEmail, setPassword }) => {
           <label>password</label>
           <div className="password-div">
             <input
+              required
               className="login-input-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
