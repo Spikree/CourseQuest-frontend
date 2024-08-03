@@ -2,12 +2,22 @@ import CourseCard from "../../components/course card/CourseCard";
 import "./Main.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Main = () => {
   const url = "http://localhost:5000";
   const [courses, setCourses] = useState([]);
+  const navigate = useNavigate();
+
+  const authToken = localStorage.getItem("token");
+
+  useEffect(() => {
+    if (!authToken) {
+      navigate("/");
+    }
+  }, []);
 
   useEffect(() => {
     const fetchCourses = async () => {

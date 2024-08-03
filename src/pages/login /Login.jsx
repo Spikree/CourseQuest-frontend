@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Login.css";
 import { FaEye } from "react-icons/fa";
 import axios from "axios";
@@ -9,7 +9,15 @@ import { useNavigate } from "react-router-dom";
 const Login = ({ email, password, setEmail, setPassword }) => {
   const [showPassword, setShowPassword] = useState(false);
   const api = "http://localhost:5000";
+
   const navigate = useNavigate();
+  const authToken = localStorage.getItem("token");
+
+  useEffect(() => {
+    if (authToken) {
+      navigate("/main");
+    }
+  }, []);
 
   const handleSubmit = async () => {
     event.preventDefault();

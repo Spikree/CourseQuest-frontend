@@ -1,7 +1,17 @@
+import { useEffect } from "react";
 import "./Home.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
+  const authToken = localStorage.getItem("token");
+
+  useEffect(() => {
+    if (authToken) {
+      navigate("/main");
+    }
+  }, []);
+
   return (
     <>
       <div className="home">

@@ -3,4 +3,5 @@
     display: flex;
     justify-content: space-evenly;
     padding: 80px;
+    flex-wrap: wrap;
 }

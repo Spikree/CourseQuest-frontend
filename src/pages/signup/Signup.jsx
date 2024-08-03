@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Signup.css";
 import { FaEye } from "react-icons/fa";
 import axios from "axios";
@@ -7,9 +7,16 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 
 const Signup = ({ name, email, password, setName, setEmail, setPassword }) => {
+  const navigate = useNavigate();
+  const authToken = localStorage.getItem("token");
+
+  useEffect(() => {
+    if (authToken) {
+      navigate("/main");
+    }
+  }, []);
   const [showPassword, setShowPassword] = useState(false);
   const api = "http://localhost:5000";
-  const navigate = useNavigate();
   const handleSubmit = async () => {
     event.preventDefault();
 

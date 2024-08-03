@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-around;
     padding: 20px;
+    align-items: center;
 }
 
 .nav-items ul {
@@ -20,6 +21,29 @@
 .nav-items ul a:hover {
     background-color: #2d2f31;
     color: white;
+}
+
+.search-box {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 2px solid #2d2f31;
+    text-align: center;
+    height: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 12px;
+}
+
+.search-box .search-box-input {
+    border: none;
+}
+
+.search-box .search-box-input:focus {
+    outline: none;
+    border: none;
 }
 
 @media (max-width: 767px) {
