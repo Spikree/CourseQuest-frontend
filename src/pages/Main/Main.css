@@ -1,3 +1,6 @@
 .main {
     height: max-content;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 80px;
 }
