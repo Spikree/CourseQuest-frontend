@@ -2,9 +2,10 @@ import CourseCard from "../../components/course card/CourseCard";
 import "./Main.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import NoCourses from "../../components/No cources/NoCourses";
 
 const Main = () => {
   const url = "http://localhost:5000";
@@ -42,26 +43,28 @@ const Main = () => {
     fetchCourses();
   }, []);
 
-  console.log(courses);
-
-  console.log(courses._id);
-
   return (
     <div className="main">
       <ToastContainer />
-
-      {courses.length > 0 ? (
-        courses.map((course) => (
-          <CourseCard
-            key={course._id}
-            name={course.name}
-            description={course.description}
-            price={course.price}
-          />
-        ))
-      ) : (
-        <p>No courses found</p>
-      )}
+      <div
+        className="main-container"
+        style={{ display: "flex", justifyContent: "space-evenly" }}
+      >
+        {courses.length > 0 ? (
+          courses.map((course) => (
+            <Link key={course._id} to={"/course-page"}>
+              <CourseCard
+                key={course._id}
+                name={course.name}
+                description={course.description}
+                price={course.price}
+              />
+            </Link>
+          ))
+        ) : (
+          <NoCourses />
+        )}
+      </div>
     </div>
   );
 };

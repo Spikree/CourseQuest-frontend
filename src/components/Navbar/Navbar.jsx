@@ -39,8 +39,7 @@ const Navbar = () => {
             placeholder="search"
           />
 
-          <CiSearch />
-          {/* <RxCross1 /> */}
+          {searchValue ? <RxCross1 /> : <CiSearch />}
         </div>
 
         <div className={isLoggedIn ? "profile-info" : "disabled"}>

@@ -1,7 +1,12 @@
 .main {
-    height: max-content;
+    align-items: center;
+}
+
+.main-container {
     display: flex;
-    justify-content: space-evenly;
-    padding: 80px;
+    justify-content: space-between;
+    padding-top: 80px;
+    padding-bottom: 80px;
     flex-wrap: wrap;
+    gap: 20px;
 }

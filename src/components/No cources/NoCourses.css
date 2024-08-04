@@ -1,0 +1,14 @@
+.not-found-icon {
+    font-size: 400px;
+}
+
+.no-courses {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-courses p {
+    font-size: 20px;
+}
