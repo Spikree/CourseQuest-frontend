@@ -3,9 +3,7 @@ import "./VideoPlayer.css";
 const VideoPlayer = ({ videoUrl }) => {
   return (
     <div className="course-page-video">
-      <video controls>
-        <source src={videoUrl} />
-      </video>
+      {videoUrl ? <video controls src={videoUrl} /> : <p>No video selected</p>}
     </div>
   );
 };

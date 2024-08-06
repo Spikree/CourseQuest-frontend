@@ -7,19 +7,19 @@ import VideoPlayer from "../../components/video player/VideoPlayer";
 
 const CoursePage = () => {
   const navigate = useNavigate();
-
   const courseId = "66aa7acac0404bda3b4c50ef";
-
   const url = "http://localhost:5000";
-
   const token = localStorage.getItem("token");
-  const [video, setVideos] = useState([]);
+
+  const [videos, setVideos] = useState([]);
+  const [videoId, setVideoId] = useState("");
+  const [videoUrl, setVideoUrl] = useState();
 
   useEffect(() => {
     const fetchVideos = async () => {
       try {
         const response = await axios.get(
-          url + `/get-videos?courseId=${courseId}`,
+          `${url}/get-videos?courseId=${courseId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -33,28 +33,63 @@ const CoursePage = () => {
       }
     };
 
-    fetchVideos();
-
     if (!token) {
       navigate("/login");
+    } else {
+      fetchVideos();
     }
-  }, [token]);
+  }, [token, navigate, courseId]);
 
-  console.log(video);
+  const getVideoUrl = async () => {
+    try {
+      const response = await axios.get(
+        `${url}/get-video-by-id?videoId=${videoId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      if (response.data.videoUrl) {
+        setVideoUrl(response.data.videoUrl);
+      } else {
+        console.log("No video URL found");
+      }
+
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleVideoClick = (videoId) => {
+    setVideoId(videoId);
+    getVideoUrl();
+  };
 
   return (
     <div className="course-page">
       <div className="course-page-left">
         <div className="course-page-video-left">
-          {video.map((video, index) => {
-            return <VideoPlayer key={index} videoUrl={video.videoUrl} />;
-          })}
+          <VideoPlayer videoUrl={videoUrl} />
         </div>
-
         <div className="course-page-video-bottom"></div>
       </div>
       <div className="course-page-right">
-        <VideoCard />
+        {videos.map((video) => (
+          <div
+            key={video.videoId}
+            onClick={() => handleVideoClick(video.videoId)}
+          >
+            <VideoCard
+              videoId={video.videoId}
+              videoName={video.videoName}
+              videoDescription={video.videoDescription}
+              videoNumber={video.videoNumber}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -1,0 +1,10 @@
+.video-card {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    align-items: center;
+    border: 1px solid #2d2f31;
+    color: #2d2f31;
+    margin: 8px;
+    overflow-x: auto;
+}
