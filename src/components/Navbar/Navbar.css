@@ -3,6 +3,8 @@
     justify-content: space-around;
     padding: 20px;
     align-items: center;
+    color: white;
+    background-color: #2d2f31;
 }
 
 .nav-items ul {
@@ -11,23 +13,27 @@
 }
 
 .nav-items ul a {
-    border: 1px solid black;
+    border: 1px solid white;
     padding: 8px;
     padding-left: 15px;
     padding-right: 15px;
     border-radius: 5px;
+    background-color: #2d2f31;
+    color: #2d2f31;
+    color: white;
 }
 
 .nav-items ul a:hover {
-    background-color: #2d2f31;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 .search-box {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    border: 2px solid #2d2f31;
+    border: 2px solid white;
+    background-color: white;
     text-align: center;
     height: 20px;
     padding-top: 10px;

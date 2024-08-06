@@ -10,6 +10,7 @@ import NoCourses from "../../components/No cources/NoCourses";
 const Main = () => {
   const url = "http://localhost:5000";
   const [courses, setCourses] = useState([]);
+  const [courseId, setCourseId] = useState();
   const navigate = useNavigate();
 
   const authToken = localStorage.getItem("token");
@@ -18,7 +19,7 @@ const Main = () => {
     if (!authToken) {
       navigate("/");
     }
-  }, []);
+  }, [authToken]);
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -29,10 +30,12 @@ const Main = () => {
             Authorization: `Bearer ${token}`,
           },
         });
+
+        console.log(res.data.courseList);
         if (res.data.length === 0) {
           console.log("no courses found");
         }
-        setCourses(res.data.courses);
+        setCourses(res.data.courseList);
       } catch (error) {
         toast.error("error fetching courses", {
           position: "top-right",
@@ -43,6 +46,11 @@ const Main = () => {
     fetchCourses();
   }, []);
 
+  const handleClick = (courseId) => {
+    setCourseId(courseId);
+    console.log(courseId);
+  };
+
   return (
     <div className="main">
       <ToastContainer />
@@ -51,15 +59,18 @@ const Main = () => {
         style={{ display: "flex", justifyContent: "space-evenly" }}
       >
         {courses.length > 0 ? (
-          courses.map((course) => (
-            <Link key={course._id} to={"/course-page"}>
-              <CourseCard
-                key={course._id}
-                name={course.name}
-                description={course.description}
-                price={course.price}
-              />
-            </Link>
+          courses.map((course, index) => (
+            <div key={index} onClick={() => handleClick(course._id)}>
+              <Link key={course._id} to={"/course-page"}>
+                <CourseCard
+                  courseThumbnail={course.courseThumbnail}
+                  key={course._id}
+                  name={course.name}
+                  description={course.description}
+                  price={course.price}
+                />
+              </Link>
+            </div>
           ))
         ) : (
           <NoCourses />

@@ -6,4 +6,7 @@
     border-right: 1px solid black;
     border-top: 1px solid black;
     align-items: center;
+    height: 100%;
+    margin-left: 7px;
+    border-radius: 10px;
 }

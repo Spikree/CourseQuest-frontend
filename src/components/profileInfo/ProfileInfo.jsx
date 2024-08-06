@@ -1,45 +1,53 @@
 import { useEffect, useState } from "react";
 import "./ProfileInfo.css";
 import axios from "axios";
+import { getInitials } from "../../helper/getInitials";
+import { useNavigate } from "react-router-dom";
 
 const ProfileInfo = () => {
-  // const url = "http://localhost:5000";
-
-  // const token = localStorage.getItem("token");
+  const url = "http://localhost:5000";
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
 
   const [userName, setUserName] = useState("loading");
 
-  // useEffect(() => {
-  //   const getUser = async () => {
-  //     try {
-  //       const response = await axios.get(url + "/get-user", {
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       });
+  const onLogout = () => {
+    localStorage.clear();
+    navigate("/");
+  };
 
-  //       const userName = response.user.name;
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const response = await axios.get(url + "/get-user", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
-  //       setUserName(userName);
+        const userName = response.data.user.name;
 
-  //       console.log(response);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
+        setUserName(userName);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  //   getUser();
-  // }, []);
-
-  // console.log(userName);
+    getUser();
+  }, [token]);
 
   return (
     <div className="profile-info">
-      <div className="user-profile">{userName}</div>
+      <div className="user-profile">{getInitials(userName)}</div>
 
       <div className="user-info">
-        <p>name</p>
-        <button>Logout</button>
+        <p style={{ marginBottom: "2px" }}>{userName}</p>
+        <a
+          style={{ border: "1px solid gray", textAlign: "center" }}
+          onClick={() => onLogout()}
+        >
+          Logout
+        </a>
       </div>
     </div>
   );

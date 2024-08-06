@@ -1,9 +1,10 @@
+import SelectVideo from "../select a video/SelectVideo";
 import "./VideoPlayer.css";
 
 const VideoPlayer = ({ videoUrl }) => {
   return (
     <div className="course-page-video">
-      {videoUrl ? <video controls src={videoUrl} /> : <p>No video selected</p>}
+      {videoUrl ? <video controls src={videoUrl} /> : <SelectVideo />}
     </div>
   );
 };

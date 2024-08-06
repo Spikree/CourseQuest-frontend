@@ -8,13 +8,13 @@ import ProfileInfo from "../profileInfo/ProfileInfo";
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  const accessToken = localStorage.getItem("token");
+  const Token = localStorage.getItem("token");
 
   useEffect(() => {
-    if (accessToken) {
+    if (Token) {
       setIsLoggedIn(!isLoggedIn);
     }
-  }, [accessToken]);
+  }, [Token]);
 
   return (
     <>
@@ -39,7 +39,11 @@ const Navbar = () => {
             placeholder="search"
           />
 
-          {searchValue ? <RxCross1 /> : <CiSearch />}
+          {searchValue ? (
+            <RxCross1 style={{ color: "black" }} />
+          ) : (
+            <CiSearch style={{ color: "black" }} />
+          )}
         </div>
 
         <div className={isLoggedIn ? "profile-info" : "disabled"}>

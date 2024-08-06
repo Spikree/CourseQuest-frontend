@@ -1,15 +1,15 @@
 import "./NowPlaying.css";
 
-const NowPlaying = () => {
+const NowPlaying = ({ name, description, number }) => {
   return (
     <div className="now-playing">
       <div className="now-playing-left">
-        <h2>Video name</h2>
-        <p>Description</p>
+        <h2>{name}</h2>
+        <p>{description}</p>
       </div>
 
       <div className="now-playing-right">
-        <h3>1</h3>
+        <h3>{number}</h3>
       </div>
     </div>
   );

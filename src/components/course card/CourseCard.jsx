@@ -1,11 +1,11 @@
 import "./CourseCard.css";
 import { IoIosAddCircleOutline } from "react-icons/io";
 
-const CourseCard = ({ name, price, description }) => {
+const CourseCard = ({ name, price, description, courseThumbnail }) => {
   return (
     <div className="course-card">
       <div className="course-image">
-        <img src="https://pbs.twimg.com/media/FPg8IHhWUAE0Zyz?format=jpg&name=large" />
+        <img src={courseThumbnail} />
       </div>
 
       <div className="course-title">

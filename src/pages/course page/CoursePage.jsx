@@ -15,7 +15,9 @@ const CoursePage = () => {
   const [videos, setVideos] = useState([]);
   const [videoId, setVideoId] = useState("");
   const [videoUrl, setVideoUrl] = useState();
-  const [nowPlayingData, setNowPlayingData] = useState();
+  const [nowPlayingName, setNowPlayingName] = useState("Choose a video");
+  const [nowPlayingDescription, setNowPlayingDescription] = useState();
+  const [nowPlayingNumber, setNowPlayingNumber] = useState();
 
   useEffect(() => {
     const fetchVideos = async () => {
@@ -54,13 +56,14 @@ const CoursePage = () => {
       );
 
       if (response.data.videoUrl) {
+        console.log(response.data);
+        setNowPlayingName(response.data.videoName);
+        setNowPlayingNumber(response.data.videoNumber);
+        setNowPlayingDescription(response.data.videoDescription);
         setVideoUrl(response.data.videoUrl);
-        setNowPlayingData(response.data);
       } else {
         console.log("No video URL found");
       }
-
-      console.log(nowPlayingData);
     } catch (error) {
       console.log(error);
     }
@@ -79,9 +82,9 @@ const CoursePage = () => {
         </div>
         <div className="course-page-video-bottom">
           <NowPlaying
-            name={nowPlayingData}
-            description={nowPlayingData}
-            number={nowPlayingData}
+            name={nowPlayingName}
+            description={nowPlayingDescription}
+            number={nowPlayingNumber}
           />
         </div>
       </div>

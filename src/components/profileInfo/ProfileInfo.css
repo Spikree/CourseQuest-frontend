@@ -7,7 +7,7 @@
 .user-profile {
     display: flex;
     justify-content: center;
-    background-color: rgb(189, 218, 214);
+    background-color: gray;
     padding: 10px;
     width: 30px;
     height: 30px;

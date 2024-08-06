@@ -1,0 +1,8 @@
+.select-video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    margin: 10px;
+    width: 100%;
+}
