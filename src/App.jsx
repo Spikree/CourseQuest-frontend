@@ -8,6 +8,7 @@ import Signup from "./pages/signup/Signup";
 import { useState } from "react";
 import Main from "./pages/Main/Main";
 import CoursePage from "./pages/course page/CoursePage";
+import UserAccount from "./pages/user account/UserAccount";
 
 const App = () => {
   const [name, setName] = useState("");
@@ -45,6 +46,7 @@ const App = () => {
         />
         <Route path="/main" element={<Main />} />
         <Route path="/course-page" element={<CoursePage />} />
+        <Route path="/user-account" element={<UserAccount />} />
       </Routes>
       <Footer />
     </div>

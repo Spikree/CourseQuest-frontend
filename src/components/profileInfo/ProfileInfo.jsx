@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./ProfileInfo.css";
 import axios from "axios";
 import { getInitials } from "../../helper/getInitials";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ProfileInfo = () => {
   const url = "http://localhost:5000";
@@ -38,8 +38,9 @@ const ProfileInfo = () => {
 
   return (
     <div className="profile-info">
-      <div className="user-profile">{getInitials(userName)}</div>
-
+      <Link to={"/user-account"}>
+        <div className="user-profile">{getInitials(userName)}</div>
+      </Link>
       <div className="user-info">
         <p style={{ marginBottom: "2px" }}>{userName}</p>
         <a
