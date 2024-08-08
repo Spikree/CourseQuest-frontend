@@ -8,4 +8,17 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 450px;
+}
+
+.create-course input {
+    padding: 10px 30px 10px 30px;
+    border-radius: 12px;
+    border: 1px solid black;
+}
+
+.create-course button {
+    padding: 10px 20px 10px 20px;
+    border-radius: 12px;
+    border: none;
 }
