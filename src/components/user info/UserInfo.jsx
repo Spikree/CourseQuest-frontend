@@ -3,7 +3,7 @@ import "./UserInfo.css";
 import axios from "axios";
 
 const UserInfo = () => {
-  const url = "http://localhost:5000";
+  const url = import.meta.env.VITE_BACKEND_URL;
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const token = localStorage.getItem("token");

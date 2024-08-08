@@ -1,16 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import "./CoursePage.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import VideoCard from "../../components/video card/VideoCard";
 import axios from "axios";
 import VideoPlayer from "../../components/video player/VideoPlayer";
 import NowPlaying from "../../components/now playing/NowPlaying";
+import { StoreContext } from "../../context/StoreContext";
 
 const CoursePage = () => {
   const navigate = useNavigate();
-  const courseId = "66aa7acac0404bda3b4c50ef";
-  const url = "http://localhost:5000";
+  const url = import.meta.env.VITE_BACKEND_URL;
   const token = localStorage.getItem("token");
+
+  const { CourseId } = useContext(StoreContext);
 
   const [videos, setVideos] = useState([]);
   const [videoId, setVideoId] = useState("");
@@ -23,7 +25,7 @@ const CoursePage = () => {
     const fetchVideos = async () => {
       try {
         const response = await axios.get(
-          `${url}/get-videos?courseId=${courseId}`,
+          `${url}/get-videos?courseId=${CourseId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -42,7 +44,7 @@ const CoursePage = () => {
     } else {
       fetchVideos();
     }
-  }, [token, navigate, courseId]);
+  }, [token, navigate, CourseId]);
 
   const getVideoUrl = async () => {
     try {

@@ -1,9 +1,23 @@
+import { useContext } from "react";
 import "./CourseCard.css";
 import { IoIosAddCircleOutline } from "react-icons/io";
+import { StoreContext } from "../../context/StoreContext";
 
-const CourseCard = ({ name, price, description, courseThumbnail }) => {
+const CourseCard = ({
+  name,
+  price,
+  description,
+  courseThumbnail,
+  courseId,
+}) => {
+  const { SetCourseId } = useContext(StoreContext);
+
+  const handleClick = (courseId) => {
+    SetCourseId(courseId);
+  };
+
   return (
-    <div className="course-card">
+    <div onClick={() => handleClick(courseId)} className="course-card">
       <div className="course-image">
         <img src={courseThumbnail} />
       </div>

@@ -1,18 +1,17 @@
 import CourseCard from "../../components/course card/CourseCard";
 import "./Main.css";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import NoCourses from "../../components/No cources/NoCourses";
+import { StoreContext } from "../../context/StoreContext";
 
 const Main = () => {
-  const url = "http://localhost:5000";
+  const url = import.meta.env.VITE_BACKEND_URL;
   const [courses, setCourses] = useState([]);
-  const [courseId, setCourseId] = useState();
   const navigate = useNavigate();
-
   const authToken = localStorage.getItem("token");
 
   useEffect(() => {
@@ -46,11 +45,6 @@ const Main = () => {
     fetchCourses();
   }, []);
 
-  const handleClick = (courseId) => {
-    setCourseId(courseId);
-    console.log(courseId);
-  };
-
   return (
     <div className="main">
       <ToastContainer />
@@ -60,11 +54,12 @@ const Main = () => {
       >
         {courses.length > 0 ? (
           courses.map((course, index) => (
-            <div key={index} onClick={() => handleClick(course._id)}>
+            <div key={index}>
               <Link key={course._id} to={"/course-page"}>
                 <CourseCard
                   courseThumbnail={course.courseThumbnail}
                   key={course._id}
+                  courseId={course._id}
                   name={course.name}
                   description={course.description}
                   price={course.price}

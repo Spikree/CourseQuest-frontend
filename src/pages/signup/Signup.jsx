@@ -16,12 +16,12 @@ const Signup = ({ name, email, password, setName, setEmail, setPassword }) => {
     }
   }, []);
   const [showPassword, setShowPassword] = useState(false);
-  const api = "http://localhost:5000";
+  const url = import.meta.env.VITE_BACKEND_URL;
   const handleSubmit = async () => {
     event.preventDefault();
 
     try {
-      const response = await axios.post(api + "/create-account", {
+      const response = await axios.post(url + "/create-account", {
         name: name,
         email: email,
         password: password,

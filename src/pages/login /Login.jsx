@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const Login = ({ email, password, setEmail, setPassword }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const api = "http://localhost:5000";
+  const url = import.meta.env.VITE_BACKEND_URL;
 
   const navigate = useNavigate();
   const authToken = localStorage.getItem("token");
@@ -23,7 +23,7 @@ const Login = ({ email, password, setEmail, setPassword }) => {
     event.preventDefault();
 
     try {
-      const response = await axios.post(api + "/login-account", {
+      const response = await axios.post(url + "/login-account", {
         email: email,
         password: password,
       });

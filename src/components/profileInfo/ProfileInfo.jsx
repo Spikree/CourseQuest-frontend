@@ -5,7 +5,7 @@ import { getInitials } from "../../helper/getInitials";
 import { Link, useNavigate } from "react-router-dom";
 
 const ProfileInfo = () => {
-  const url = "http://localhost:5000";
+  const url = import.meta.env.VITE_BACKEND_URL;
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 

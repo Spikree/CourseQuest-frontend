@@ -12,7 +12,7 @@ const CreateCourse = () => {
   const [thumbnail, setThumbnail] = useState(null);
   const fileInputRef = useRef(null);
 
-  const url = "http://localhost:5000";
+  const url = import.meta.env.VITE_BACKEND_URL;
   const token = localStorage.getItem("token");
 
   const formData = new FormData();
