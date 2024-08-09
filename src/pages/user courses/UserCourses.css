@@ -1,0 +1,9 @@
+.user-courses {
+    height: 90vh;
+    overflow-x: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}

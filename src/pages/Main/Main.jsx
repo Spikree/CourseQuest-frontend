@@ -1,12 +1,11 @@
 import CourseCard from "../../components/course card/CourseCard";
 import "./Main.css";
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import NoCourses from "../../components/No cources/NoCourses";
-import { StoreContext } from "../../context/StoreContext";
 
 const Main = () => {
   const url = import.meta.env.VITE_BACKEND_URL;

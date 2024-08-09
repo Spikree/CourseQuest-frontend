@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./UserInfo.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const UserInfo = () => {
   const url = import.meta.env.VITE_BACKEND_URL;
@@ -31,6 +32,16 @@ const UserInfo = () => {
     <div className="user-info-main">
       <p className="user-name">{userName}</p>
       <p className="user-email">{userEmail}</p>
+      <Link
+        style={{
+          border: "1px solid black",
+          padding: "10px",
+          borderRadius: "10px",
+        }}
+        to="/all-courses"
+      >
+        View all your courses
+      </Link>
     </div>
   );
 };

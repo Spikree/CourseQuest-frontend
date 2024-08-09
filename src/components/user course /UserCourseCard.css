@@ -1,0 +1,22 @@
+.user-courses-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 30px;
+    border-radius: 12px;
+    width: 300px;
+}
+
+.course-name h2 {
+    margin-bottom: 0px;
+}
+
+.course-name p {
+    margin-top: 3px;
+}
+
+.user-courses-image {
+    width: 300px;
+    border-radius: 12px;
+    border: 1px solid black;
+}
