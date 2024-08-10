@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./UserCourseCard.css";
 
 const UserCourseCard = ({
@@ -22,6 +23,10 @@ const UserCourseCard = ({
         <h4>$ {coursePrice}</h4>
         <p>created on: {courseDate}</p>
       </div>
+
+      <Link to={"/upload-videos"} className="upload-video">
+        upload videos
+      </Link>
     </div>
   );
 };

@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ email, password, setEmail, setPassword }) => {
+const Login = ({ email, password, setEmail, setPassword, setIsLoggedIn }) => {
   const [showPassword, setShowPassword] = useState(false);
   const url = import.meta.env.VITE_BACKEND_URL;
 
@@ -30,6 +30,7 @@ const Login = ({ email, password, setEmail, setPassword }) => {
 
       if (response.data && response.data.accessToken) {
         localStorage.setItem("token", response.data.accessToken);
+        setIsLoggedIn(true);
         navigate("/main");
       }
 

@@ -1,11 +1,11 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home/Home";
 import Login from "./pages/login /Login";
 import Signup from "./pages/signup/Signup";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Main from "./pages/Main/Main";
 import CoursePage from "./pages/course page/CoursePage";
 import UserAccount from "./pages/user account/UserAccount";
@@ -15,10 +15,11 @@ const App = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <div className="app">
-      <Navbar />
+      <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
@@ -29,6 +30,7 @@ const App = () => {
               password={password}
               setEmail={setEmail}
               setPassword={setPassword}
+              setIsLoggedIn={setIsLoggedIn}
             />
           }
         />
@@ -41,6 +43,7 @@ const App = () => {
               name={name}
               setEmail={setEmail}
               setPassword={setPassword}
+              setIsLoggedIn={setIsLoggedIn}
               setName={setName}
             />
           }

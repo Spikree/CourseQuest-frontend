@@ -6,7 +6,15 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 
-const Signup = ({ name, email, password, setName, setEmail, setPassword }) => {
+const Signup = ({
+  name,
+  email,
+  password,
+  setName,
+  setEmail,
+  setPassword,
+  setIsLoggedIn,
+}) => {
   const navigate = useNavigate();
   const authToken = localStorage.getItem("token");
 
@@ -29,6 +37,7 @@ const Signup = ({ name, email, password, setName, setEmail, setPassword }) => {
 
       if (response.data && response.data.accessToken) {
         localStorage.setItem("token", response.data.accessToken);
+        setIsLoggedIn(true);
         navigate("/main");
       }
 
