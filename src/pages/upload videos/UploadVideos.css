@@ -1,0 +1,59 @@
+.upload-videos {
+    height: 100vh;
+    display: flex;
+    gap: 3p;
+}
+
+.existing-videos {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.video-upload {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-upload {
+    display: flex;
+    align-items: center;
+}
+
+.video-upload form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+
+.input-div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.input-div input {
+    padding: 10px 20px 10px 20px;
+    width: 300px;
+    border-radius: 8px;
+}
+
+.input-div input:focus {
+    outline: none;
+}
+
+.video-upload form button {
+    padding: 10px 20px 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #2d2f31;
+    color: white;
+    font-size: 15px;
+}

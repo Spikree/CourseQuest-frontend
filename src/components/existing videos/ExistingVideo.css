@@ -1,0 +1,7 @@
+.existing-video-inner {
+    border: 1px solid black;
+    width: 350px;
+    text-align: center;
+    padding: 20px 40px 20px 40px;
+    border-radius: 12px;
+}

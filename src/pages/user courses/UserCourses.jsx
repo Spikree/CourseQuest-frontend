@@ -22,7 +22,7 @@ const UserCourses = () => {
         }
         setCoursesData(response.data.coursesData);
 
-        console.log(coursesData);
+        console.log(response.data.courseDate);
       } catch (error) {
         console.log(error);
       }
@@ -38,6 +38,7 @@ const UserCourses = () => {
           <UserCourseCard
             courseName={course.name}
             courseDescription={course.description}
+            courseId={course._id}
             coursePrice={course.price}
             courseDate={course.createdAt}
             courseThumbnail={course.courseThumbnail}

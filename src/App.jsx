@@ -10,6 +10,7 @@ import Main from "./pages/Main/Main";
 import CoursePage from "./pages/course page/CoursePage";
 import UserAccount from "./pages/user account/UserAccount";
 import UserCourses from "./pages/user courses/UserCourses";
+import UploadVideos from "./pages/upload videos/UploadVideos";
 
 const App = () => {
   const [name, setName] = useState("");
@@ -52,6 +53,7 @@ const App = () => {
         <Route path="/course-page" element={<CoursePage />} />
         <Route path="/user-account" element={<UserAccount />} />
         <Route path="/all-courses" element={<UserCourses />} />
+        <Route path="/upload-videos" element={<UploadVideos />} />
       </Routes>
       <Footer />
     </div>

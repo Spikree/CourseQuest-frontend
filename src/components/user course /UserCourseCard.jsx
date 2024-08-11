@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import "./UserCourseCard.css";
+import { useContext } from "react";
+import { StoreContext } from "../../context/StoreContext";
 
 const UserCourseCard = ({
   courseName,
@@ -7,7 +9,14 @@ const UserCourseCard = ({
   coursePrice,
   courseDate,
   courseThumbnail,
+  courseId,
 }) => {
+  const { SetCourseId } = useContext(StoreContext);
+
+  const handleClick = () => {
+    SetCourseId(courseId);
+  };
+
   return (
     <div className="user-courses-card">
       <div className="user-course-image">
@@ -24,7 +33,11 @@ const UserCourseCard = ({
         <p>created on: {courseDate}</p>
       </div>
 
-      <Link to={"/upload-videos"} className="upload-video">
+      <Link
+        onClick={() => handleClick()}
+        to={"/upload-videos"}
+        className="upload-video"
+      >
         upload videos
       </Link>
     </div>
